@@ -30,66 +30,346 @@
         <script src="js/rbush.min.js"></script>
         <script src="js/labelgun.min.js"></script>
         <script src="js/labels.js"></script>
-
+        <script src="data/NBR_08_0.js"></script>
+        <script src="data/IVM_07_1.js"></script>
+        <script src="data/DelegacionesDF_2.js"></script>
         <script>
-
-        var map = L.map('map', {zoomControl:true, maxZoom:18, minZoom:1
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:18, minZoom:1
         }).fitBounds([[19.0339395739,-99.6661469643],[19.605981907,-98.6374843457]]);
-
         var hash = new L.Hash(map);
         map.attributionControl.addAttribution('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a>');
         var bounds_group = new L.featureGroup([]);
-        var basemap0 = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibmFkaXJpbmciLCJhIjoiY2l5MDA5a2xsMDA5eTMxcXV1dWhrNmFlOCJ9.n9cSzQce7iaj8o8eipuuhA', {
-			maxZoom: 18,
-			attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
-				'<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-				'Imagery © <a href="http://mapbox.com">Mapbox</a>',
-			id: 'mapbox.dark'
-		}).addTo(map);
-
+        var basemap0 = L.tileLayer('http://stamen-tiles-a.a.ssl.fastly.net/terrain-background/{z}/{x}/{y}.png', {
+            attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+            maxZoom: 18
+        });
+        basemap0.addTo(map);
         function setBounds() {
             map.setMaxBounds(map.getBounds());
         }
+        function pop_NBR_08_0(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Id'] !== null ? Autolinker.link(String(feature.properties['Id'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['gridcode'] !== null ? Autolinker.link(String(feature.properties['gridcode'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>C_NBR</strong><br />' + (feature.properties['C_NBR'] !== null ? Autolinker.link(String(feature.properties['C_NBR'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
 
-        var videoUrls = [
-		'IVM.mp4'
-	],
-	bounds = L.latLngBounds([[19.02195739,-99.6671469643], [19.593981907,-98.6254843457]]);
-  map.fitBounds(bounds);
-  var overlay = L.videoOverlay(videoUrls, bounds, {
-		opacity: 0.7,
-		interactive: false,
-		autoplay: false
-	});
-	map.addLayer(overlay);
+        function style_NBR_08_0_0(feature) {
+            switch(String(feature.properties['C_NBR'])) {
+                case '1':
+                    return {
+                pane: 'pane_NBR_08_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,0.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(65,105,225,1.0)',
+            }
+                    break;
+                case '2':
+                    return {
+                pane: 'pane_NBR_08_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,0.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(72,209,204,1.0)',
+            }
+                    break;
+                case '3':
+                    return {
+                pane: 'pane_NBR_08_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,0.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(189,183,107,1.0)',
+            }
+                    break;
+                case '4':
+                    return {
+                pane: 'pane_NBR_08_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,0.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,215,0,1.0)',
+            }
+                    break;
+                case '5':
+                    return {
+                pane: 'pane_NBR_08_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,0.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,165,0,1.0)',
+            }
+                    break;
+                case '6':
+                    return {
+                pane: 'pane_NBR_08_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,0.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,99,71,1.0)',
+            }
+                    break;
+                case '7':
+                    return {
+                pane: 'pane_NBR_08_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,0.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(178,34,34,1.0)',
+            }
+                    break;
+                default:
+                    return {
+                pane: 'pane_NBR_08_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,0.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(192,14,211,1.0)',
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_NBR_08_0');
+        map.getPane('pane_NBR_08_0').style.zIndex = 400;
+        map.getPane('pane_NBR_08_0').style['mix-blend-mode'] = 'normal';
+        var layer_NBR_08_0 = new L.geoJson(json_NBR_08_0, {
+            attribution: '<a href=""></a>',
+            pane: 'pane_NBR_08_0',
+            onEachFeature: pop_NBR_08_0,
+            style: style_NBR_08_0_0,
+        });
+        bounds_group.addLayer(layer_NBR_08_0);
+        map.addLayer(layer_NBR_08_0);
+        function pop_IVM_07_1(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Id'] !== null ? Autolinker.link(String(feature.properties['Id'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['gridcode'] !== null ? Autolinker.link(String(feature.properties['gridcode'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['IVM'] !== null ? Autolinker.link(String(feature.properties['IVM'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>C_IVM</strong><br />' + (feature.properties['C_IVM'] !== null ? Autolinker.link(String(feature.properties['C_IVM'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
 
-  overlay.on('load', function () {
-  var MyPauseControl = L.Control.extend({
-    onAdd: function() {
-      var button = L.DomUtil.create('button');
-      button.innerHTML = '■';
-      L.DomEvent.on(button, 'click', function () {
-        overlay.getElement().pause();
-      });
-      return button;
-    }
-  });
-  var MyPlayControl = L.Control.extend({
-    onAdd: function() {
-      var button = L.DomUtil.create('button');
-      button.innerHTML = '►';
-      L.DomEvent.on(button, 'click', function () {
-        overlay.getElement().play();
-      });
-      return button;
-    }
-  });
+        function style_IVM_07_1_0(feature) {
+            switch(String(feature.properties['C_IVM'])) {
+                case '1':
+                    return {
+                pane: 'pane_IVM_07_1',
+                opacity: 1,
+                color: 'rgba(0,0,0,0.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(0,114,86,1.0)',
+            }
+                    break;
+                case '2':
+                    return {
+                pane: 'pane_IVM_07_1',
+                opacity: 1,
+                color: 'rgba(0,0,0,0.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(56,112,0,1.0)',
+            }
+                    break;
+                case '3':
+                    return {
+                pane: 'pane_IVM_07_1',
+                opacity: 1,
+                color: 'rgba(0,0,0,0.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(112,112,0,1.0)',
+            }
+                    break;
+                case '4':
+                    return {
+                pane: 'pane_IVM_07_1',
+                opacity: 1,
+                color: 'rgba(0,0,0,0.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(246,199,0,1.0)',
+            }
+                    break;
+                case '5':
+                    return {
+                pane: 'pane_IVM_07_1',
+                opacity: 1,
+                color: 'rgba(0,0,0,0.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(233,118,0,1.0)',
+            }
+                    break;
+                case '6':
+                    return {
+                pane: 'pane_IVM_07_1',
+                opacity: 1,
+                color: 'rgba(0,0,0,0.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(189,30,36,1.0)',
+            }
+                    break;
+                default:
+                    return {
+                pane: 'pane_IVM_07_1',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(105,211,48,1.0)',
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_IVM_07_1');
+        map.getPane('pane_IVM_07_1').style.zIndex = 401;
+        map.getPane('pane_IVM_07_1').style['mix-blend-mode'] = 'normal';
+        var layer_IVM_07_1 = new L.geoJson(json_IVM_07_1, {
+            attribution: '<a href=""></a>',
+            pane: 'pane_IVM_07_1',
+            onEachFeature: pop_IVM_07_1,
+            style: style_IVM_07_1_0,
+        });
+        bounds_group.addLayer(layer_IVM_07_1);
+        map.addLayer(layer_IVM_07_1);
+        function pop_DelegacionesDF_2(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['AREA'] !== null ? Autolinker.link(String(feature.properties['AREA'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PERIMETER'] !== null ? Autolinker.link(String(feature.properties['PERIMETER'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['DELEGA0501'] !== null ? Autolinker.link(String(feature.properties['DELEGA0501'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NOMBRE_DEL'] !== null ? Autolinker.link(String(feature.properties['NOMBRE_DEL'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CLAVE'] !== null ? Autolinker.link(String(feature.properties['CLAVE'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
 
-  var pauseControl = (new MyPauseControl()).addTo(map);
-  var playControl = (new MyPlayControl()).addTo(map);
-});
-
-
+        function style_DelegacionesDF_2_0() {
+            return {
+                pane: 'pane_DelegacionesDF_2',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(253,98,108,0.0)',
+            }
+        }
+        map.createPane('pane_DelegacionesDF_2');
+        map.getPane('pane_DelegacionesDF_2').style.zIndex = 402;
+        map.getPane('pane_DelegacionesDF_2').style['mix-blend-mode'] = 'normal';
+        var layer_DelegacionesDF_2 = new L.geoJson(json_DelegacionesDF_2, {
+            attribution: '<a href=""></a>',
+            pane: 'pane_DelegacionesDF_2',
+            onEachFeature: pop_DelegacionesDF_2,
+            style: style_DelegacionesDF_2_0,
+        });
+        bounds_group.addLayer(layer_DelegacionesDF_2);
+        map.addLayer(layer_DelegacionesDF_2);
+        var baseMaps = {};
+        L.control.layers(baseMaps,{'<img src="legend/DelegacionesDF_2.png" /> Delegaciones DF': layer_DelegacionesDF_2,'IVM_07<br /><table><tr><td style="text-align: center;"><img src="legend/IVM_07_1_10.png" /></td><td>1</td></tr><tr><td style="text-align: center;"><img src="legend/IVM_07_1_21.png" /></td><td>2</td></tr><tr><td style="text-align: center;"><img src="legend/IVM_07_1_32.png" /></td><td>3</td></tr><tr><td style="text-align: center;"><img src="legend/IVM_07_1_43.png" /></td><td>4</td></tr><tr><td style="text-align: center;"><img src="legend/IVM_07_1_54.png" /></td><td>5</td></tr><tr><td style="text-align: center;"><img src="legend/IVM_07_1_65.png" /></td><td>6</td></tr><tr><td style="text-align: center;"><img src="legend/IVM_07_1_6.png" /></td><td></td></tr></table>': layer_IVM_07_1,'NBR_08<br /><table><tr><td style="text-align: center;"><img src="legend/NBR_08_0_10.png" /></td><td>1</td></tr><tr><td style="text-align: center;"><img src="legend/NBR_08_0_21.png" /></td><td>2</td></tr><tr><td style="text-align: center;"><img src="legend/NBR_08_0_32.png" /></td><td>3</td></tr><tr><td style="text-align: center;"><img src="legend/NBR_08_0_43.png" /></td><td>4</td></tr><tr><td style="text-align: center;"><img src="legend/NBR_08_0_54.png" /></td><td>5</td></tr><tr><td style="text-align: center;"><img src="legend/NBR_08_0_65.png" /></td><td>6</td></tr><tr><td style="text-align: center;"><img src="legend/NBR_08_0_76.png" /></td><td>7</td></tr><tr><td style="text-align: center;"><img src="legend/NBR_08_0_7.png" /></td><td></td></tr></table>': layer_NBR_08_0,}).addTo(map);
+        setBounds();
         </script>
     </body>
 </html>
